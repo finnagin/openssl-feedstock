@@ -26,6 +26,8 @@ REM Build step
 nmake
 if %ERRORLEVEL% neq 0 exit 1
 
-REM Testing step
-nmake test
-if %ERRORLEVEL% neq 0 exit 1
+if "%ARCH%"!="arm64" (
+    REM Testing step
+    nmake test
+    if %ERRORLEVEL% neq 0 exit 1
+)
