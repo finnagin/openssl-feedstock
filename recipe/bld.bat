@@ -40,13 +40,3 @@ if %ERRORLEVEL% neq 0 exit 1
 REM Testing step
 nmake test
 if %ERRORLEVEL% neq 0 exit 1
-
-:: Copy the [de]activate scripts to %PREFIX%\etc\conda\[de]activate.d.
-:: This will allow them to be run on environment activation.
-for %%F in (activate deactivate) DO (
-    if not exist %PREFIX%\etc\conda\%%F.d mkdir %PREFIX%\etc\conda\%%F.d
-    copy "%RECIPE_DIR%\%%F-win.bat" "%PREFIX%\etc\conda\%%F.d\%PKG_NAME%_%%F-win.bat"
-    copy "%RECIPE_DIR%\%%F-win.ps1" "%PREFIX%\etc\conda\%%F.d\%PKG_NAME%_%%F-win.ps1"
-    :: Copy unix shell activation scripts, needed by Windows Bash users
-    copy "%RECIPE_DIR%\%%F-win.sh" "%PREFIX%\etc\conda\%%F.d\%PKG_NAME%_%%F-win.sh"
-)
