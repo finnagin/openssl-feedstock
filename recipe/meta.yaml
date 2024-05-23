@@ -54,6 +54,7 @@ outputs:
     test:
       requires:
         - pkg-config
+        - ripgrep
       commands:
         - copy NUL checksum.txt        # [win]
         - touch checksum.txt           # [unix]
@@ -63,6 +64,13 @@ outputs:
 
         # test pkgconfig metadata
         - pkg-config --print-errors --exact-version "{{ version }}" openssl
+
+        # ensure (de)activation scripts for bash-on-win do not contain crlf line endings;
+        # ripgrep will return exit code 1 if no match is found, which is what we want after
+        # filtering to the carriage-return character that shouldn't be there.
+        {% for task in ["activate", "deactivate"] %}
+        - type %CONDA_PREFIX%\etc\conda\{{ task }}.d\openssl_{{ task }}-win.sh | rg \r & if %ERRORLEVEL% NEQ 1 (exit 0) else (exit 1)  # [win]
+        {% endfor %}
 
   - name: libopenssl-static
     script: install_libopenssl-static.sh  # [unix]
