@@ -11,9 +11,11 @@ source:
     # backport https://github.com/openssl/openssl/pull/24687 (2 commits)
     - patches/0001-Give-util-mkinstallvars.pl-more-fine-grained-control.patch
     - patches/0002-Adapt-all-the-exporter-files-to-the-new-vars-from-ut.patch
+    # backport https://github.com/openssl/openssl/pull/24877
+    - patches/0003-Fix-cmake-generator.patch
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
