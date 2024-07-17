@@ -1,7 +1,7 @@
 From 49395721ae58a3779439dc9174c865e108daf04b Mon Sep 17 00:00:00 2001
 From: Richard Levitte <levitte@openssl.org>
 Date: Thu, 20 Jun 2024 14:33:15 +0200
-Subject: [PATCH 2/2] Adapt all the exporter files to the new vars from
+Subject: [PATCH 2/3] Adapt all the exporter files to the new vars from
  util/mkinstallvars.pl
 
 With this, the pkg-config files take better advantage of relative directory
