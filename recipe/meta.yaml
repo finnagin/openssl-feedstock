@@ -32,8 +32,6 @@ outputs:
     script: install_openssl.sh  # [unix]
     script: install_openssl.bat  # [win]
     build:
-      no_link: lib/libcrypto.so.3.0  # [linux]
-      no_link: lib/libcrypto.3.0.dylib  # [osx]
       run_exports:
         # openssl's versioning used to be X.Y.Z(rev), but is MAJOR.MINOR.PATCH since 3.0.0;
         # see https://www.openssl.org/policies/releasestrat.html
