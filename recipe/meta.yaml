@@ -90,13 +90,13 @@ outputs:
         - if not exist %LIBRARY_LIB%\libssl_static.lib exit 1       # [win]
 
 about:
-  home: http://www.openssl.org/
+  home: https://www.openssl.org/
   license_file: LICENSE.txt
   license: Apache-2.0
   license_family: Apache
   summary: OpenSSL is an open-source implementation of the SSL and TLS protocols
   dev_url: https://github.com/openssl/openssl
-  doc_url: https://www.openssl.org/docs/man3.0/
+  doc_url: https://docs.openssl.org/master/
 
 extra:
   recipe-maintainers:
