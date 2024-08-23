@@ -57,6 +57,10 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]] || [[ "$(uname -s)" = "Linux"
       # See: https://github.com/openssl/openssl/blob/openssl-3.0.0/test/recipes/02-test_errstr.t#L20-L26
       rm ./test/recipes/02-test_errstr.t
   fi
+  if [[ "$target_platform" == "linux-aarch64" ]]; then
+      # https://github.com/openssl/openssl/issues/17900
+      rm ./test/recipes/30-test_afalg.t
+  fi
   echo "Running tests"
   make test
 fi
