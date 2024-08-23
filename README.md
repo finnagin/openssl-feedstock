@@ -3,7 +3,7 @@ About openssl-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/openssl-feedstock/blob/main/LICENSE.txt)
 
-Home: http://www.openssl.org/
+Home: https://www.openssl.org/
 
 Package license: Apache-2.0
 
@@ -11,20 +11,13 @@ Summary: OpenSSL is an open-source implementation of the SSL and TLS protocols
 
 Development: https://github.com/openssl/openssl
 
-Documentation: https://www.openssl.org/docs/man3.0/
+Documentation: https://docs.openssl.org/master/
 
 Current build status
 ====================
 
 
-<table><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://app.travis-ci.com/conda-forge/openssl-feedstock">
-        <img alt="linux" src="https://img.shields.io/travis/com/conda-forge/openssl-feedstock/main.svg?label=Linux">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
