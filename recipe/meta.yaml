@@ -64,13 +64,15 @@ outputs:
         # test prefix is set as well (see #155)
         - if [[ "$(pkg-config --variable=prefix openssl)" == "" ]]; then exit 1; fi     # [unix]
 
-        # make it possible to check !ERRORLEVEL!
-        - setlocal EnableDelayedExpansion   # [win]
         # ensure (de)activation scripts for bash-on-win do not contain crlf line endings;
         # ripgrep will return exit code 1 if no match is found, which is what we want after
         # filtering to the carriage-return character that shouldn't be there.
         {% for task in ["activate", "deactivate"] %}
-        - type %CONDA_PREFIX%\etc\conda\{{ task }}.d\openssl_{{ task }}-win.sh | rg \r & if !ERRORLEVEL! NEQ 1 exit 1   # [win]
+        - type %CONDA_PREFIX%\etc\conda\{{ task }}.d\openssl_{{ task }}-win.sh | rg \r & if ERRORLEVEL ==1 (exit 0) else (exit 1)  # [win]
+        # do not use %ERRORLEVEL% or !ERRORLEVEL!, but ERRORLEVEL, c.f.
+        # https://devblogs.microsoft.com/oldnewthing/20080926-00/?p=20743;
+        # while `if ... NEQ 1 exit 1` would be nicer, NEQ is incompatible with
+        # using bare ERRORLEVEL, see https://stackoverflow.com/a/74148543
         {% endfor %}
 
   - name: libopenssl-static
