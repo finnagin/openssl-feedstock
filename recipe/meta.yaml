@@ -1,4 +1,4 @@
-{% set version = "3.3.1" %}
+{% set version = "3.3.2" %}
 
 package:
   name: openssl_split
@@ -6,16 +6,10 @@ package:
 
 source:
   url: https://github.com/openssl/openssl/releases/download/openssl-{{ version }}/openssl-{{ version }}.tar.gz
-  sha256: 777cd596284c883375a2a7a11bf5d2786fc5413255efab20c50d6ffe6d020b7e
-  patches:
-    # backport https://github.com/openssl/openssl/pull/24687 (2 commits)
-    - patches/0001-Give-util-mkinstallvars.pl-more-fine-grained-control.patch
-    - patches/0002-Adapt-all-the-exporter-files-to-the-new-vars-from-ut.patch
-    # backport https://github.com/openssl/openssl/pull/24877
-    - patches/0003-Fix-cmake-generator.patch
+  sha256: 2e8a40b01979afe8be0bbfb3de5dc1c6709fedb46d6c89c10da114ab5fc3d281
 
 build:
-  number: 3
+  number: 0
 
 requirements:
   build:
