@@ -69,21 +69,21 @@ outputs:
         # using bare ERRORLEVEL, see https://stackoverflow.com/a/74148543
         {% endfor %}
 
-  - name: libopenssl-static
-    script: install_libopenssl-static.sh  # [unix]
-    script: install_libopenssl-static.bat  # [win]
-    requirements:
-      build:
-        - {{ compiler('c') }}
-        - {{ stdlib('c') }}
-      run:
-        - {{ pin_subpackage('openssl', exact=True) }}
-    test:
-      commands:
-        - test -f ${PREFIX}/lib/libcrypto.a                   # [unix]
-        - test -f ${PREFIX}/lib/libssl.a                      # [unix]
-        - if not exist %LIBRARY_LIB%\libcrypto_static.lib exit 1    # [win]
-        - if not exist %LIBRARY_LIB%\libssl_static.lib exit 1       # [win]
+  # - name: libopenssl-static
+  #   script: install_libopenssl-static.sh  # [unix]
+  #   script: install_libopenssl-static.bat  # [win]
+  #   requirements:
+  #     build:
+  #       - {{ compiler('c') }}
+  #       - {{ stdlib('c') }}
+  #     run:
+  #       - {{ pin_subpackage('openssl', exact=True) }}
+  #   test:
+  #     commands:
+  #       - test -f ${PREFIX}/lib/libcrypto.a                   # [unix]
+  #       - test -f ${PREFIX}/lib/libssl.a                      # [unix]
+  #       - if not exist %LIBRARY_LIB%\libcrypto_static.lib exit 1    # [win]
+  #       - if not exist %LIBRARY_LIB%\libssl_static.lib exit 1       # [win]
 
 about:
   home: https://www.openssl.org/
