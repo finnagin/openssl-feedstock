@@ -29,6 +29,7 @@ perl configure %OSSL_CONFIGURE%   ^
     no-fips                       ^
     no-module                     ^
     no-zlib                       ^
+    no-apps                       ^
     shared
 if %ERRORLEVEL% neq 0 exit 1
 
